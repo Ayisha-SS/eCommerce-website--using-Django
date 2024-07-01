@@ -107,20 +107,26 @@ i{
     padding: 4px 8px;
     border-radius: 8px;
 }
-#spotlight .list-item .one{
+#spotlight .list li.one{
     color: #1D4ED8;
     background-color: #E8EDFB;
 }
-#spotlight .list-item .two{
+#spotlight  .two{
     display: flex;
     align-items: center;
     gap: 4px;
+}
+#spotlight .list li.two i{
+    margin-right: 4px;
 }
 #spotlight .spotlight{
     padding: 20px 0;
 }
 #spotlight .spotlight-content{
     position: relative;
+}
+#spotlight .spotlight-image img{
+    width: 100%;
 }
 #spotlight .spotlight-heading{
     position: absolute;
@@ -152,7 +158,7 @@ i{
     justify-content: space-between;
     padding: 8px 0;
 }
-text{
+.text{
     font-size: 24px;
     font-weight: 600;
 }
@@ -164,7 +170,7 @@ text{
     cursor: pointer;
 }
  .item-content{
-    padding: 12px 0;
+    padding: 12px 0 20px 0;
     display: flex;
     gap: 16px;
     margin-top: 8px;
@@ -173,8 +179,8 @@ text{
     position: relative;
 }
 .image{
-    width: 296px;
-    height: 216px;
+    /* width: 296px; */
+    /* height: 216px; */
     border-radius: 4px;
 }
 .image img{
@@ -184,7 +190,7 @@ text{
 .heart{
     position: absolute;
     top:8px;
-    left: 14rem;
+    left: 10rem;
     background-color: #fff;
     padding: 6px;
     border-radius: 100%;
@@ -282,6 +288,7 @@ text{
 #details .content{
     display: flex;
     gap: 16px;
+    padding-bottom: 20px;
 }
 #details .left{
     display: flex;
@@ -341,6 +348,134 @@ text{
     border-bottom: 1px solid #DBDBDB;   
 }
 #details .middle .availability{
-
+    display: flex;
+    flex-direction: column;
+    row-gap: 5px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #DBDBDB;;
+}
+#details .middle .condition{
+    font-size: 16px;
+    font-weight: 400;
+}
+#details .middle .quantity{
+    display: flex;
+    gap: 12px;
+}
+#details .middle .quantity h6{
+    
+    font-size: 16px;
+    font-weight: 400;
+}
+#details .middle .quantity .number{
+    border: 1px solid #DBDBDB;
+    padding: 5px 10px;
+    border-radius: 4px;
+}
+#details .middle .quantity .total{
+    color: red;
+}
+#details .middle .price{
+    display: flex;
+    align-items: center;
+    gap:12px;
+    font-size: 16px;
+    font-weight: 400;
+    margin-bottom: 14px;
+}
+#details .middle .price strong{
+    font-size: 24px;
+}
+#details .middle .button{
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 20px;
+}
+#details .middle .button .buy{
+    padding: 8px 100px;
+    border-radius: 100px;
+    background-color: #1D4ED8;
+    color: #fff;
+    border: none;
+    font-size: 14px;
+    font-weight: 600;
+}
+#details .middle .button .add-item button{
+    padding: 8px 24px;
+    border-radius: 100px;
+    font-size: 14px;
+    font-weight: 600;
+    border: none;
+    color: #1D4ED8;
+}
+#details .middle .button .add-item .cart{
+    background-color: #E8EDFB;
+    
+}
+#details .middle .button .add-item .wishlist{
+    background-color: #B8C0CC ;
+}
+#details .middle .button .add-item .wishlist i{
+    font-size: 12px;
+}
+#details .middle .service{
+    font-size: 14px;
+    font-weight: 400;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;   
+}
+#details .middle .service .checkbox{
+    color: #000;
+    font-size: 16px;
+    font-weight: 500;
+}
+#details .middle .service .agreement{
+    color: #5F5F5F;
+    font-size: 12px;
+    font-weight: 400;
+    text-decoration: underline;
+    line-height: 20px;
+    margin-bottom: 20px;
+}
+#details .middle .card{
+    padding: 24px 16px;
+    background-color: #F6F6F6;
+    border-radius: 20px;
+}
+#details .middle .delivery{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #DBDBDB;
+}
+#details .middle .delivery h6{
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 16px;
+}
+#details .middle .return{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-top: 15px;
+}
+#details .middle .return h6{
+    font-size: 14px;
+    font-weight: 400;
+    
+}
+#details .middle .return a{
+    color: #000;
+    text-decoration: underline;
+}
+#details .middle .payment{
+    display: flex;
+    /* flex-direction: column; */
+    gap: 8px;
+}
+#details .middle .payment .pay-methods{
+    width: 40px;
 }
 #details .right{}

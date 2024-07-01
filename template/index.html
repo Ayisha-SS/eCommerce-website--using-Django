@@ -2,10 +2,11 @@
 <html lang="en">
 
 <head>
+    {% load static %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ebay</title>
-    <link rel="stylesheet" href="/static/css/style.css" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
         type="text/css">
 </head>
@@ -18,7 +19,7 @@
                 <div class='container'>
                     <div class=''>
                         <ul class='list-items'>
-                            <li><img src="/static/images/subLogo.png" alt="eBay plus" /></li>
+                            <li><img src="{% static 'images/subLogo' %}.png" alt="eBay plus" /></li>
                             <li>eBay Deals</li>
                             <li>Find a Store</li>
                             <li>Help</li>
@@ -44,7 +45,7 @@
             <section class="wrapper">
                 <div class='navbar'>
                     <div>
-                        <img src="/static/images/logo.png" alt="Logo" />
+                        <img src="{% static 'images/logo' %}.png" alt="Logo" />
                     </div>
                     <div class='nav-item'>
                         <div class='search'>
@@ -86,8 +87,8 @@
                 </ul>
                 <div class='spotlight'>
                     <div class='spotlight-content'>
-                        <div class=''>
-                            <img src="/static/images/spotlight-bg.png" alt="Spotlight" />
+                        <div class='spotlight-image'>
+                            <img src="{% static 'images/spotlight-bg' %}.png" alt="Spotlight" />
                         </div>
                         <span class='spotlight-heading'>
                             <h1 class='spotlight-text'>Long weekend <br/>adventures await</h1>
@@ -108,42 +109,34 @@
                 <h5 class="seeAll">See All</h5>
             </div>
             <div class="item-content">
+                {% for product in products %}
                 <div>
                     <div class="image-content">
                         <div class="image">
-                            <img src="/static/images/product-1.jpg" alt="1">
+                            <img src="{{ product.image.url }}" alt="{{product.name}}">
+                            <!-- {% if product.image %}
+                            <img src="{{ product.image }}" alt="{{ product.name }}">
+                        {% else %}
+                            <img src="{% static 'images/default.jpg' %}" alt="Default Image">
+                        {% endif %} -->
                         </div>
                         <span class="heart"><i class="fa fa-heart-o" aria-hidden="true"></i></span>
                     </div>
                     <span class="text-content">
-                        <a href="#" class="image-text">Ultimate Samsung Portable<br/> 
-                            Bluetooth Speaker</a>
-                            <span class="image-price">AU $59.00</span>
+                        <a href="{% url 'web:details' product.id %}" class="image-text">{{product.name}}<br/> </a>
+                            <span class="image-price">AU ${{product.price}}</span>
                     </span>
                 </div>
-
-                <div>
+                {% endfor %}
+                <!-- <div>
                     <div class="image-content">
                         <div class="image">
-                            <img src="/static/images/product-1.jpg" alt="1">
+                            <img src="{% static 'images/product-1' %}.jpg" alt="1">
                         </div>
                         <span class="heart"><i class="fa fa-heart-o" aria-hidden="true"></i></span>
                     </div>
                     <span class="text-content">
-                        <a href="#" class="image-text">Ultimate Samsung Portable<br/> 
-                            Bluetooth Speaker</a>
-                            <span class="image-price">AU $59.00</span>
-                    </span>
-                </div>
-                <div>
-                    <div class="image-content">
-                        <div class="image">
-                            <img src="/static/images/product-1.jpg" alt="1">
-                        </div>
-                        <span class="heart"><i class="fa fa-heart-o" aria-hidden="true"></i></span>
-                    </div>
-                    <span class="text-content">
-                        <a href="#" class="image-text">Ultimate Samsung Portable<br/> 
+                        <a href="{% url 'web:details' %}" class="image-text">Ultimate Samsung Portable<br/> 
                             Bluetooth Speaker</a>
                             <span class="image-price">AU $59.00</span>
                     </span>
@@ -151,12 +144,12 @@
                 <div>
                     <div class="image-content">
                         <div class="image">
-                            <img src="/static/images/product-1.jpg" alt="1">
+                            <img src="{% static 'images/product-1' %}.jpg" alt="1">
                         </div>
                         <span class="heart"><i class="fa fa-heart-o" aria-hidden="true"></i></span>
                     </div>
                     <span class="text-content">
-                        <a href="#" class="image-text">Ultimate Samsung Portable<br/> 
+                        <a href="{% url 'web:details' %}" class="image-text">Ultimate Samsung Portable<br/> 
                             Bluetooth Speaker</a>
                             <span class="image-price">AU $59.00</span>
                     </span>
@@ -164,12 +157,12 @@
                 <div>
                     <div class="image-content">
                         <div class="image">
-                            <img src="/static/images/product-1.jpg" alt="1">
+                            <img src="{% static 'images/product-1' %}.jpg" alt="1">
                         </div>
                         <span class="heart"><i class="fa fa-heart-o" aria-hidden="true"></i></span>
                     </div>
                     <span class="text-content">
-                        <a href="#" class="image-text">Ultimate Samsung Portable<br/> 
+                        <a href="{% url 'web:details' %}" class="image-text">Ultimate Samsung Portable<br/> 
                             Bluetooth Speaker</a>
                             <span class="image-price">AU $59.00</span>
                     </span>
@@ -177,16 +170,29 @@
                 <div>
                     <div class="image-content">
                         <div class="image">
-                            <img src="/static/images/product-1.jpg" alt="1">
+                            <img src="{% static 'images/product-1' %}.jpg" alt="1">
                         </div>
                         <span class="heart"><i class="fa fa-heart-o" aria-hidden="true"></i></span>
                     </div>
                     <span class="text-content">
-                        <a href="#" class="image-text">Ultimate Samsung Portable<br/> 
+                        <a href="{% url 'web:details' %}" class="image-text">Ultimate Samsung Portable<br/> 
                             Bluetooth Speaker</a>
                             <span class="image-price">AU $59.00</span>
                     </span>
                 </div>
+                <div>
+                    <div class="image-content">
+                        <div class="image">
+                            <img src="{% static 'images/product-1' %}.jpg" alt="1">
+                        </div>
+                        <span class="heart"><i class="fa fa-heart-o" aria-hidden="true"></i></span>
+                    </div>
+                    <span class="text-content">
+                        <a href="{% url 'web:details' %}" class="image-text">Ultimate Samsung Portable<br/> 
+                            Bluetooth Speaker</a>
+                            <span class="image-price">AU $59.00</span>
+                    </span>
+                </div> -->
 
             </div>
         </section>
@@ -204,12 +210,12 @@
                 <div>
                     <div class="image-content">
                         <div class="image">
-                            <img src="/static/images/product-1.jpg" alt="1">
+                            <img src="{% static 'images/product-1' %}.jpg" alt="1">
                         </div>
                         <span class="heart"><i class="fa fa-heart-o" aria-hidden="true"></i></span>
                     </div>
                     <span class="text-content">
-                        <a href="#" class="image-text">Ultimate Samsung Portable<br/> 
+                        <a href="{% url 'web:details' %}" class="image-text">Ultimate Samsung Portable<br/> 
                             Bluetooth Speaker</a>
                             <span class="image-price">AU $59.00</span>
                     </span>
@@ -218,12 +224,12 @@
                 <div>
                     <div class="image-content">
                         <div class="image">
-                            <img src="/static/images/product-1.jpg" alt="1">
+                            <img src="{% static 'images/product-1' %}.jpg" alt="1">
                         </div>
                         <span class="heart"><i class="fa fa-heart-o" aria-hidden="true"></i></span>
                     </div>
                     <span class="text-content">
-                        <a href="#" class="image-text">Ultimate Samsung Portable<br/> 
+                        <a href="{% url 'web:details' %}" class="image-text">Ultimate Samsung Portable<br/> 
                             Bluetooth Speaker</a>
                             <span class="image-price">AU $59.00</span>
                     </span>
@@ -231,12 +237,12 @@
                 <div>
                     <div class="image-content">
                         <div class="image">
-                            <img src="/static/images/product-1.jpg" alt="1">
+                            <img src="{% static 'images/product-1' %}.jpg" alt="1">
                         </div>
                         <span class="heart"><i class="fa fa-heart-o" aria-hidden="true"></i></span>
                     </div>
                     <span class="text-content">
-                        <a href="#" class="image-text">Ultimate Samsung Portable<br/> 
+                        <a href="{% url 'web:details' %}" class="image-text">Ultimate Samsung Portable<br/> 
                             Bluetooth Speaker</a>
                             <span class="image-price">AU $59.00</span>
                     </span>
@@ -244,12 +250,12 @@
                 <div>
                     <div class="image-content">
                         <div class="image">
-                            <img src="/static/images/product-1.jpg" alt="1">
+                            <img src="{% static 'images/product-1' %}.jpg" alt="1">
                         </div>
                         <span class="heart"><i class="fa fa-heart-o" aria-hidden="true"></i></span>
                     </div>
                     <span class="text-content">
-                        <a href="#" class="image-text">Ultimate Samsung Portable<br/> 
+                        <a href="{% url 'web:details' %}" class="image-text">Ultimate Samsung Portable<br/> 
                             Bluetooth Speaker</a>
                             <span class="image-price">AU $59.00</span>
                     </span>
@@ -257,12 +263,12 @@
                 <div>
                     <div class="image-content">
                         <div class="image">
-                            <img src="/static/images/product-1.jpg" alt="1">
+                            <img src="{% static 'images/product-1' %}.jpg" alt="1">
                         </div>
                         <span class="heart"><i class="fa fa-heart-o" aria-hidden="true"></i></span>
                     </div>
                     <span class="text-content">
-                        <a href="#" class="image-text">Ultimate Samsung Portable<br/> 
+                        <a href="{% url 'web:details' %}" class="image-text">Ultimate Samsung Portable<br/> 
                             Bluetooth Speaker</a>
                             <span class="image-price">AU $59.00</span>
                     </span>
@@ -270,12 +276,12 @@
                 <div>
                     <div class="image-content">
                         <div class="image">
-                            <img src="/static/images/product-1.jpg" alt="1">
+                            <img src="{% static 'images/product-1' %}.jpg" alt="1">
                         </div>
                         <span class="heart"><i class="fa fa-heart-o" aria-hidden="true"></i></span>
                     </div>
                     <span class="text-content">
-                        <a href="#" class="image-text">Ultimate Samsung Portable<br/> 
+                        <a href="{% url 'web:details' %}" class="image-text">Ultimate Samsung Portable<br/> 
                             Bluetooth Speaker</a>
                             <span class="image-price">AU $59.00</span>
                     </span>
@@ -297,12 +303,12 @@
                 <div>
                     <div class="image-content">
                         <div class="image">
-                            <img src="/static/images/product-1.jpg" alt="1">
+                            <img src="{% static 'images/product-1' %}.jpg" alt="1">
                         </div>
                         <span class="heart"><i class="fa fa-heart-o" aria-hidden="true"></i></span>
                     </div>
                     <span class="text-content">
-                        <a href="#" class="image-text">Ultimate Samsung Portable<br/> 
+                        <a href="{% url 'web:details' %}" class="image-text">Ultimate Samsung Portable<br/> 
                             Bluetooth Speaker</a>
                             <span class="image-price">AU $59.00</span>
                     </span>
@@ -311,12 +317,12 @@
                 <div>
                     <div class="image-content">
                         <div class="image">
-                            <img src="/static/images/product-1.jpg" alt="1">
+                            <img src="{% static 'images/product-1' %}.jpg" alt="1">
                         </div>
                         <span class="heart"><i class="fa fa-heart-o" aria-hidden="true"></i></span>
                     </div>
                     <span class="text-content">
-                        <a href="#" class="image-text">Ultimate Samsung Portable<br/> 
+                        <a href="{% url 'web:details' %}" class="image-text">Ultimate Samsung Portable<br/> 
                             Bluetooth Speaker</a>
                             <span class="image-price">AU $59.00</span>
                     </span>
@@ -324,12 +330,12 @@
                 <div>
                     <div class="image-content">
                         <div class="image">
-                            <img src="/static/images/product-1.jpg" alt="1">
+                            <img src="{% static 'images/product-1' %}.jpg" alt="1">
                         </div>
                         <span class="heart"><i class="fa fa-heart-o" aria-hidden="true"></i></span>
                     </div>
                     <span class="text-content">
-                        <a href="#" class="image-text">Ultimate Samsung Portable<br/> 
+                        <a href="{% url 'web:details' %}" class="image-text">Ultimate Samsung Portable<br/> 
                             Bluetooth Speaker</a>
                             <span class="image-price">AU $59.00</span>
                     </span>
@@ -337,12 +343,12 @@
                 <div>
                     <div class="image-content">
                         <div class="image">
-                            <img src="/static/images/product-1.jpg" alt="1">
+                            <img src="{% static 'images/product-1' %}.jpg" alt="1">
                         </div>
                         <span class="heart"><i class="fa fa-heart-o" aria-hidden="true"></i></span>
                     </div>
                     <span class="text-content">
-                        <a href="#" class="image-text">Ultimate Samsung Portable<br/> 
+                        <a href="{% url 'web:details' %}" class="image-text">Ultimate Samsung Portable<br/> 
                             Bluetooth Speaker</a>
                             <span class="image-price">AU $59.00</span>
                     </span>
@@ -350,12 +356,12 @@
                 <div>
                     <div class="image-content">
                         <div class="image">
-                            <img src="/static/images/product-1.jpg" alt="1">
+                            <img src="{% static 'images/product-1' %}.jpg" alt="1">
                         </div>
                         <span class="heart"><i class="fa fa-heart-o" aria-hidden="true"></i></span>
                     </div>
                     <span class="text-content">
-                        <a href="#" class="image-text">Ultimate Samsung Portable<br/> 
+                        <a href="{% url 'web:details' %}" class="image-text">Ultimate Samsung Portable<br/> 
                             Bluetooth Speaker</a>
                             <span class="image-price">AU $59.00</span>
                     </span>
@@ -363,12 +369,12 @@
                 <div>
                     <div class="image-content">
                         <div class="image">
-                            <img src="/static/images/product-1.jpg" alt="1">
+                            <img src="{% static 'images/product-1' %}.jpg" alt="1">
                         </div>
                         <span class="heart"><i class="fa fa-heart-o" aria-hidden="true"></i></span>
                     </div>
                     <span class="text-content">
-                        <a href="#" class="image-text">Ultimate Samsung Portable<br/> 
+                        <a href="{% url 'web:details' %}" class="image-text">Ultimate Samsung Portable<br/> 
                             Bluetooth Speaker</a>
                             <span class="image-price">AU $59.00</span>
                     </span>
