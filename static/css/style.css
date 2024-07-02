@@ -103,9 +103,10 @@ i{
     color: #494949;
     padding: 12px 0;
 }
-#spotlight .list-item{
+#spotlight .list-item li{
     padding: 4px 8px;
     border-radius: 8px;
+    cursor: pointer;
 }
 #spotlight .list li.one{
     color: #1D4ED8;
@@ -284,6 +285,7 @@ i{
 } */
 #details .text{
     color: #494949;
+    font-size: 14px;
 }
 #details .content{
     display: flex;
@@ -479,3 +481,23 @@ i{
     width: 40px;
 }
 #details .right{}
+
+
+.list-item.saved-item {
+    color: red;
+    font-weight: bold;
+}
+#counter{
+    position: relative;
+}
+#saved-counter{
+    /* background-color: #fff; */
+    border-radius: 100px;
+    padding: 2px;
+    position: absolute;
+    bottom:10px;
+    left: 20px;
+}
+
+
+

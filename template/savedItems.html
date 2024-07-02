@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saved Items</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+        type="text/css">
+</head>
+<body>
+
+    <section id="saved-items">
+        <div class="wrapper">
+            <h1>Your Saved Items</h1>
+            <ul>
+                {% for saved_item in saved_items %}
+                <li>
+                    <img src="{{ saved_item.product.image.url }}" alt="{{ saved_item.product.name }}">
+                    <h3>{{ saved_item.product.name }}</h3>
+                    <p>Price: AU ${{ saved_item.product.price }}</p>
+                    <!-- Add more details as needed -->
+                </li>
+                {% empty %}
+                <li>No saved items yet.</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </section>
+
+</body>
+</html>

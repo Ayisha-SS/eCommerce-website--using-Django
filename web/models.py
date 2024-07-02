@@ -28,6 +28,16 @@ class Product(models.Model):
         return self.name
     
 
+class SavedItem(models.Model):
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+
+    class Meta:
+        db_table = "web_saved"
+
+    def __str__(self):
+        return str(self.product)
+    
+
 # class Category(models.Model):
 #     name = models.CharField(max_length=100)
 #     slug = models.SlugField(unique=True)

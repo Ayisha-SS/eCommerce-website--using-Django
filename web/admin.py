@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from web.models import Product, Category, Gallery
+from web.models import Product, Category, Gallery,SavedItem
 
 
 class GalleryAdmin(admin.TabularInline):
@@ -9,7 +9,7 @@ class GalleryAdmin(admin.TabularInline):
     # prepopulated_fields = {"slug": ("name",)}
 
 class ProductAdmin(admin.ModelAdmin):
-    list_display = ("name","price")
+    list_display = ("name","price","image")
     prepopulated_fields = {"slug": ("name",)}
 
     inlines = [GalleryAdmin]
@@ -20,3 +20,4 @@ class CategoryAdmin(admin.ModelAdmin):
 
 admin.site.register(Product,ProductAdmin)
 admin.site.register(Category,CategoryAdmin)
+admin.site.register(SavedItem)

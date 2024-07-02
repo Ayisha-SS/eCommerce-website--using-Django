@@ -72,8 +72,14 @@
                 <span class="search-back"><i class="fa fa-angle-left" aria-hidden="true"></i></span>
                 <h6 class="head-text">
                     <a href="" class="search-text">Back to search results</a>
-                    <span class="text">/ Listed in category: Electronics / Video Games &</span>
-                    <strong>/ Video Game Consoles</strong>
+                    <!-- <span class="text">/ Listed in category: Electronics / Video Games &</span>
+                    <strong>/ Video Game Consoles</strong> -->
+                    <span class="text">
+                        / Listed in category:
+                        {% for category in categories %}
+                            {{ category.name }}{% if not forloop.last %} /{% endif %}
+                        {% endfor %}
+                    </span>
                 </h6>
             </div>
             <div class="content">
@@ -84,7 +90,7 @@
                             <i class="fa fa-angle-right" aria-hidden="true"></i>
                         </span>
                         <div class="image">
-                            <img src="/static/images/product-30.jpg" alt="" />
+                            <img src="{{product.image.url}}" alt="{{product.name}}" />
                         </div>
                     </div>
                     <div class="image-gallery">
@@ -100,7 +106,7 @@
                     </div>
                 </div>
                 <div class="middle">
-                    <h3 class="title">Nintendo Switch Console OLED Model 7" Display 64Gb - Zelda Edition</h3>
+                    <h3 class="title">{{ product.name }}</h3>
                     <div class="availability">
                         <span class="condition">Condition: <strong>Brand New</strong></span>
                         <span class="quantity">
@@ -110,7 +116,7 @@
                     </div>
                     <div>
                         <span class="price">Price:
-                            <strong>AU $499.00</strong>
+                            <strong>AU {{product.price}}</strong>
                             Buy now,pay later available
                         </span>
                         <div class="button">
