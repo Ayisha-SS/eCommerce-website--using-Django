@@ -14,7 +14,7 @@
     <section id="saved-items">
         <div class="wrapper">
             <h1>Your Saved Items</h1>
-            <ul>
+            <ul id="saved-items-list">
                 {% for saved_item in saved_items %}
                 <li>
                     <img src="{{ saved_item.product.image.url }}" alt="{{ saved_item.product.name }}">

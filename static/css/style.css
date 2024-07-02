@@ -102,8 +102,9 @@ i{
     justify-content: center;
     color: #494949;
     padding: 12px 0;
+    /* gap: 10px; */
 }
-#spotlight .list-item li{
+#spotlight .list  li{
     padding: 4px 8px;
     border-radius: 8px;
     cursor: pointer;

@@ -111,7 +111,7 @@
                         <span class="condition">Condition: <strong>Brand New</strong></span>
                         <span class="quantity">
                             <h6>Quantity: <span class="number">1</span></h6>
-                            <h6>2 available / <span class="total">7 sold</span></h6>
+                            <h6>{{product.stock}} available / <span class="total">{{product.stock}} sold</span></h6>
                         </span>
                     </div>
                     <div>
@@ -181,6 +181,36 @@
             </div>
         </section>
     </section>
+
+    <section id="similar">
+        <section class="bg-content">
+        <section class="wrapper">
+            <div class="recent-container">
+                <h3 class="text">Similar sponsored items</h3>
+                <h5 class="seeAll">See All</h5>
+            </div>
+            <div class="item-content">
+                {% for similar_product in similar_products %}
+
+                <div>
+                    <div class="image-content">
+                        <div class="image">
+                            <img src="{{similar_product.image.url}}" alt="{{ similar_product.name }}">
+                        </div>
+                        <span class="heart"    ><i class="fa fa-heart-o" aria-hidden="true"></i></span>
+                    </div>
+                    <span class="text-content">
+                        <a href="{% url 'web:details' product.id %}" class="image-text">{{ similar_product.name }}<br/> </a>
+                            <span class="image-price">AU ${{ similar_product.price }}</span>
+                    </span>
+                </div>
+                {% endfor %}
+                
+            </div>
+        </section>
+    </section>
+    </section>
+
 </body>
 
 </html>
