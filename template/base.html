@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token }}">
+    <title>ebay</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+        type="text/css">
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+</head>
+<body>
+    
+    <section id="main">
+        <section class="border">
+            <section class="wrapper">
+                <div class='container'>
+                    <div class=''>
+                        <ul class='list-items'>
+                            <li><img src="{% static 'images/subLogo' %}.png" alt="eBay plus" /></li>
+                            <li>eBay Deals</li>
+                            <li>Find a Store</li>
+                            <li>Help</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <ul class='list-items'>
+                            <li>Sell</li>
+                            <li class='item'>Watch List <i class="fa fa-angle-down"></i></li>
+                            <li class='item'><i class="fa fa-user-circle" aria-hidden="true"></i> <i
+                                    class="fa fa-angle-down"></i></li>
+                            <li><i class="fa fa-bell-o" aria-hidden="true"></i></li>
+                            <li><i class="fa fa-shopping-cart" aria-hidden="true"></i></li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        </section>
+    </section>
+
+    <section id="navBar">
+        <section class="border">
+            <section class="wrapper">
+                <div class='navbar'>
+                    <div>
+                        <img src="{% static 'images/logo' %}.png" alt="Logo" />
+                    </div>
+                    <div class='nav-item'>
+                        <div class='search'>
+                            <span class='search-all'>All
+                                <i class="fa fa-angle-down"></i>
+                            </span>
+                            <div class='search-bar'>
+                                <span class='search-icon'>
+                                    <i class="fa fa-search" aria-hidden="true"></i>
+                                </span>
+                                <input type="text" id="search-input" class="search-input" placeholder='Search for anything'/>
+ 
+                            </div>
+                        </div>
+                        <button type="button" class="search-button" onclick="performSearch()">Search</button>
+                        <span class='search-link'><a href="">Advanced</a></span>
+                    </div>
+                </div>
+            </section>
+        </section>
+    </section>
+    
+    {% block content %}
+
+    {% endblock %}
+
+    <section id="footer">
+        <section class="wrapper">
+            <div class="footer-container">
+                <div class="footer-content">
+                    <ul class='footer-list'>
+                        <li class='footer-item'>Buy</li>
+                        <li>eBay Deals</li>
+                        <li>eBay Mobile</li>
+                        <li>ebay for Charity</li>
+                        <li>eBay Stores</li>
+                        <li>Gift Finder</li>
+                        <li>Holidays and Seasonal Occasions</li>
+                    </ul>
+                    <ul class='footer-list'>
+                        <li class='footer-item'>Sell</li>
+                        <li>eBay Deals</li>
+                        <li>eBay Mobile</li>
+                        <li>ebay for Charity</li>
+                        <li>eBay Stores</li>
+                        <li>Gift Finder</li>
+                        <li>Holidays and Seasonal Occasions</li>
+                    </ul>
+                    <ul class='footer-list'>
+                        <li class='footer-item'>Stay Connected</li>
+                        <li>eBay Deals</li>
+                        <li>eBay Mobile</li>
+                        <li>ebay for Charity</li>
+                        <li>eBay Stores</li>
+                        <li>Gift Finder</li>
+                        <li>Holidays and Seasonal Occasions</li>
+                    </ul>
+                    <ul class='footer-list'>
+                        <li class='footer-item'>About eBay</li>
+                        <li>eBay Deals</li>
+                        <li>eBay Mobile</li>
+                        <li>ebay for Charity</li>
+                        <li>eBay Stores</li>
+                        <li>Gift Finder</li>
+                        <li>Holidays and Seasonal Occasions</li>
+                    </ul>
+                    <ul class="footer-list">
+                        <li class='footer-item '>Help</li>
+                        <li>eBay Returns</li>
+                        <li>eBay Money Back Guarantee</li>
+                    </ul>
+                    <ul class="footer-list">
+                        <li class='footer-item'>Community</li>
+                        <li>Announcements</li>
+                        <li>Discussion Forum</li>
+                        <li>Answer Centre</li>
+                        <li>Groups</li>
+                    </ul>
+                </div>
+                <div class='copyright'>
+                    <h6 class='copyright-text'>
+                        Copright <i class="fa fa-copyright" aria-hidden="true" ></i> 1995-2024 eBay Inc<strong class='black'>. All Rights Reserved. </strong>
+                        <span>User Agreement, Payment Terms of use, Cookies <strong>and</strong> AdChoice</span>
+                    </h6>
+                </div>
+            </div>
+        </section>
+    </section>
+
+    <script src="/static/js/script.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+</body>
+</html>

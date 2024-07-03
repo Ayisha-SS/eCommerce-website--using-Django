@@ -201,3 +201,24 @@
 
 
                 <!-- <li class="list-item two" onclick="toggleSavedItems()"><i class="fa fa-heart" aria-hidden="true"></i> <span id="saved-counter">0</span><a href="{% url 'web:saved_items' %}">Saved</a></li> -->
+
+
+                <!-- <section id="saved-items">
+    <div class="wrapper">
+        <h1>Your Saved Items</h1>
+        <p>Number of saved items: {{ saved_items|length }}</p>
+        <ul id="saved-items-list">
+            {% for saved_item in saved_items %}
+            <li>
+                <img src="{{ saved_item.product.image.url }}" alt="{{ saved_item.product.name }}">
+                <h3>{{ saved_item.product.name }}</h3>
+                <p>Price: AU ${{ saved_item.product.price }}</p>
+            </li>
+            {% empty %}
+            <li>No saved items yet.</li>
+            {% endfor %}
+        </ul>
+
+
+    </div>
+</section> -->

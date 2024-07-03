@@ -1,189 +1,125 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends "base.html" %}
+{% load static %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ebay product details</title>
-    <link rel="stylesheet" href="/static/css/style.css" type="text/css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-        type="text/css">
-</head>
+{% block content %}
 
-<body>
-    <section id="main">
-        <section class="border">
-            <section class="wrapper">
-                <div class='container'>
-                    <div class=''>
-                        <ul class='list-items'>
-                            <li><img src="/static/images/subLogo.png" alt="eBay plus" /></li>
-                            <li>eBay Deals</li>
-                            <li>Find a Store</li>
-                            <li>Help</li>
-                        </ul>
+<section id="details">
+    <section class="wrapper">
+        <div class="head">
+            <span class="search-back"><i class="fa fa-angle-left" aria-hidden="true"></i></span>
+            <h6 class="head-text">
+                <a href="{% url 'web:index' %}" class="search-text">Back to search results</a>
+                <span class="text">
+                    / Listed in category:
+                    {% for category in categories %}
+                    {{ category.name }}{% if not forloop.last %} /{% endif %}
+                    {% endfor %}
+                </span>
+            </h6>
+        </div>
+        <div class="content">
+            <div class="left">
+                <div class="image-container">
+                    <div class="image">
+                        <img id="mainImage" src="{{ product.image.url }}" alt="{{ product.name }}" />
                     </div>
-                    <div>
-                        <ul class='list-items'>
-                            <li>Sell</li>
-                            <li class='item'>Watch List <i class="fa fa-angle-down"></i></li>
-                            <li class='item'><i class="fa fa-user-circle" aria-hidden="true"></i> <i
-                                    class="fa fa-angle-down"></i></li>
-                            <li><i class="fa fa-bell-o" aria-hidden="true"></i></li>
-                            <li><i class="fa fa-shopping-cart" aria-hidden="true"></i></li>
-                        </ul>
-                    </div>
-                </div>
-            </section>
-        </section>
-    </section>
-
-    <section id="navBar">
-        <section class="border">
-            <section class="wrapper">
-                <div class='navbar'>
-                    <div>
-                        <img src="/static/images/logo.png" alt="Logo" />
-                    </div>
-                    <div class='nav-item'>
-                        <div class='search'>
-                            <span class='search-all'>All
-                                <i class="fa fa-angle-down"></i>
-                            </span>
-                            <div class='search-bar'>
-                                <span class='search-icon'>
-                                    <i class="fa fa-search" aria-hidden="true"></i>
-                                </span>
-                                <!-- {/* <input type="text" placeholder='Search for anything' className=''/> */} -->
-                                <span class='placeholder'>Search for anything</span>
-                            </div>
-                        </div>
-                        <button class="search-button">Search</button>
-                        <span class='search-link'><a href="">Advanced</a></span>
-                    </div>
-                </div>
-            </section>
-        </section>
-    </section>
-   
-    <section id="details">
-        <section class="wrapper">
-            <div class="head">
-                <span class="search-back"><i class="fa fa-angle-left" aria-hidden="true"></i></span>
-                <h6 class="head-text">
-                    <a href="" class="search-text">Back to search results</a>
-                    <!-- <span class="text">/ Listed in category: Electronics / Video Games &</span>
-                    <strong>/ Video Game Consoles</strong> -->
-                    <span class="text">
-                        / Listed in category:
-                        {% for category in categories %}
-                            {{ category.name }}{% if not forloop.last %} /{% endif %}
-                        {% endfor %}
+                    <span class="image-arrows">
+                        <i class="fa fa-angle-left" aria-hidden="true"></i>
+                        <i class="fa fa-angle-right" aria-hidden="true"></i>
                     </span>
-                </h6>
+                </div>
+                <div class="image-gallery">
+
+                    {% for gallery_image in gallery_images %}
+                    <div class="side-image">
+                        <img src="{{ gallery_image.image.url }}" alt="{{ gallery_image.id }}" onclick="showImage('{{ gallery_image.image.url }}')" />
+                    </div>
+                    {% endfor %}
+                </div>
             </div>
-            <div class="content">
-                <div class="left">
-                    <div class="image-container">
-                        <span class="image-arrows">
-                            <i class="fa fa-angle-left" aria-hidden="true"></i>
-                            <i class="fa fa-angle-right" aria-hidden="true"></i>
-                        </span>
-                        <div class="image">
-                            <img src="{{product.image.url}}" alt="{{product.name}}" />
-                        </div>
-                    </div>
-                    <div class="image-gallery">
-                        <div class="side-image">
-                            <img src="/static/images/image31.1.jpg" alt="1" />
-                        </div>
-                        <div class="side-image">
-                            <img src="/static/images/image31.2.jpg" alt="2" />
-                        </div>
-                        <div class="side-image">
-                            <img src="/static/images/image31.3.jpg" alt="3" />
-                        </div>
-                    </div>
+            <div class="middle">
+                <h3 class="title">{{ product.name }}</h3>
+                <div class="availability">
+                    <span class="condition">Condition: <strong>Brand New</strong></span>
+                    <span class="quantity">
+                        <h6>Quantity: <span class="number">1</span></h6>
+                        <h6>{{ available_stock }} available / <span class="total">{{product.stock}} sold</span></h6>
+                    </span>
                 </div>
-                <div class="middle">
-                    <h3 class="title">{{ product.name }}</h3>
-                    <div class="availability">
-                        <span class="condition">Condition: <strong>Brand New</strong></span>
-                        <span class="quantity">
-                            <h6>Quantity: <span class="number">1</span></h6>
-                            <h6>{{product.stock}} available / <span class="total">{{product.stock}} sold</span></h6>
+                <div>
+                    <span class="price">Price:
+                        <strong>AU ${{product.price}}</strong>
+                        Buy now,pay later available
+                    </span>
+                    <div class="button">
+                        <span>
+                            <button class="buy">Buy It Now</button>
+                        </span>
+                        <span class="add-item">
+                            <button class="cart">Add to cart</button>
+                            <button class="wishlist">Add to Watchlist <i class="fa fa-angle-down"></i></button>
                         </span>
                     </div>
-                    <div>
-                        <span class="price">Price:
-                            <strong>AU {{product.price}}</strong>
-                            Buy now,pay later available
+                    <div class="service">
+                        <h6>Additional service available</h6>
+                        <span class="check">
+                            <input type="checkbox" />
+                            <a href="" class="checkbox">Full Protection For Consoles and Other Household Items from
+                                XCover.com-<strong>AU $69.89</strong>
+                            </a>
                         </span>
-                        <div class="button">
-                            <span>
-                                <button class="buy">Buy It Now</button>
-                            </span>
-                            <span class="add-item">
-                                <button class="cart">Add to cart</button>
-                                <button class="wishlist">Add to Watchlist <i class="fa fa-angle-down"></i></button>
-                            </span>
-                        </div>
-                        <div class="service">
-                            <h6>Additional service available</h6>
-                            <span>
-                                <input type="checkbox" />
-                                <a href="" class="checkbox">Full Protection For Consoles and Other Household Items from XCover.com - <strong>AU $69.89</strong>
-                                    </a>
-                            </span>
-                            <a href="" class="agreement">I have read and agreed to the policy terms. The policy is provided by XCover.com and underwritten<br/>
+                        <a href="" class="agreement">I have read and agreed to the policy terms. The policy is provided
+                            by XCover.com and underwritten<br />
                             by Pacific International Insurance Pty Ltd.[1]</a>
+                    </div>
+                    <div class="card">
+                        <div class="delivery">
+                            <h6>Collection: Click & Collect - Select store at checkout.</h6>
+                            <h6>Postage: <strong>Free</strong> Standard Parcel Delivery - Located in: Eltham, VIC,
+                                Australia</h6>
+                            <h6>Delivery: Estimated between <strong>Tue, 12 Mar</strong>and <strong>Fri, 15 Mar</strong>
+                                to 3000</h6>
                         </div>
-                        <div class="card">
-                            <div class="delivery">
-                                <h6>Collection: Click & Collect - Select store at checkout.</h6>
-                                <h6>Postage: <strong>Free</strong> Standard Parcel Delivery - Located in: Eltham, VIC, Australia</h6>
-                                <h6>Delivery: Estimated between <strong>Tue, 12 Mar</strong>and <strong>Fri, 15 Mar</strong> to 3000</h6>
-                            </div>
-                            <div class="return">
-                                <h6>Returns: 30-day returns. Buyer pays for return postage. <a href="">See Details</a></h6>
-                                <div class="payment">Payment:
-                                    <span class="pay-methods">
-                                        <img src="/static/images/image 25.png" alt="1" />
-                                    </span>
-                                    <span class="pay-methods">
-                                        <img src="/static/images/image 26.png" alt="2" />
-                                    </span>
-                                    <span class="pay-methods">
-                                        <img src="/static/images/image 27.png" alt="3" />
-                                    </span>
-                                    <span class="pay-methods">
-                                        <img src="/static/images/image 28.png" alt="4" />
-                                    </span>
-                                    <span class="pay-methods">
-                                        <img src="/static/images/image 29.png" alt="5" />
-                                    </span>
-                                    <span class="pay-methods">
-                                        <img src="/static/images/image 30.png" alt="6" />
-                                    </span>
-                                    <span class="pay-methods">
-                                        <img src="/static/images/image 31.png" alt="7" />
-                                    </span>
-                                </div>
+                        <div class="return">
+                            <h6>Returns: 30-day returns. Buyer pays for return postage. <a href="">See Details</a></h6>
+                            <div class="payment">Payment:
+                                <span class="pay-methods">
+                                    <img src="/static/images/image 25.png" alt="1" />
+                                </span>
+                                <span class="pay-methods">
+                                    <img src="/static/images/image 26.png" alt="2" />
+                                </span>
+                                <span class="pay-methods">
+                                    <img src="/static/images/image 27.png" alt="3" />
+                                </span>
+                                <span class="pay-methods">
+                                    <img src="/static/images/image 28.png" alt="4" />
+                                </span>
+                                <span class="pay-methods">
+                                    <img src="/static/images/image 29.png" alt="5" />
+                                </span>
+                                <span class="pay-methods">
+                                    <img src="/static/images/image 30.png" alt="6" />
+                                </span>
+                                <span class="pay-methods">
+                                    <img src="/static/images/image 31.png" alt="7" />
+                                </span>
                             </div>
                         </div>
                     </div>
                 </div>
-                <!-- <div class="right">
+            </div>
+            <div class="right">
                     <span>
                         <img src="/static/images/card.png" alt="">
                     </span>
-                </div> -->
-            </div>
-        </section>
+                </div>
+        </div>
     </section>
+</section>
 
-    <section id="similar">
-        <section class="bg-content">
+<section id="similar">
+    <section class="bg-content">
         <section class="wrapper">
             <div class="recent-container">
                 <h3 class="text">Similar sponsored items</h3>
@@ -197,20 +133,46 @@
                         <div class="image">
                             <img src="{{similar_product.image.url}}" alt="{{ similar_product.name }}">
                         </div>
-                        <span class="heart"    ><i class="fa fa-heart-o" aria-hidden="true"></i></span>
+                        <span class="heart"><i class="fa fa-heart-o" aria-hidden="true"></i></span>
                     </div>
                     <span class="text-content">
-                        <a href="{% url 'web:details' product.id %}" class="image-text">{{ similar_product.name }}<br/> </a>
-                            <span class="image-price">AU ${{ similar_product.price }}</span>
+                        <a href="{% url 'web:details' product.id %}" class="image-text">{{ similar_product.name }}<br />
+                        </a>
+                        <span class="image-price">AU ${{ similar_product.price }}</span>
                     </span>
                 </div>
                 {% endfor %}
-                
             </div>
         </section>
     </section>
-    </section>
+</section>
 
+<section id="specifics">
+    <section class="wrapper">
+        <section class="specific-container">
+            <div class="specific-content">
+                <div class="top">
+                    <h6 class="top-item">About this item</h6>
+                    <h6 class="top-payment">Postage,returns and payments</h6>
+                </div>
+                <div class="item-content">
+                    <h6>Seller assumes all responsibility for this listing.</h6>
+                    <h6>Last updated on 07 Mar, 2024 11:41:46 AEDST View all revision</h6>
+                </div>
+                <div class="item-specifics">
+                    <h5>Item specifics</h5>
+                    <ul>
+                        {% for specification in product.specifications.all %}
+                        <li><span class="key">{{ specification.key }}</span> <span class="value">{{ specification.value }}</span></li>
+                        {% endfor %}
+                    </ul>
+
+                </div>
+            </div>
+        </section>
+    </section>
+</section>
+{% endblock %}
 </body>
 
 </html>

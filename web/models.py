@@ -30,7 +30,7 @@ class Product(models.Model):
 
 class SavedItem(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
-
+    saved = models.BooleanField(default=False)
     class Meta:
         db_table = "web_saved"
 
@@ -61,3 +61,16 @@ class Gallery(models.Model):
 
     def __str__(self):
         return str(self.id)
+    
+
+class Specification(models.Model):
+    product = models.ForeignKey(Product, related_name='specifications', on_delete=models.CASCADE)
+    key = models.CharField(max_length=100)
+    value = models.CharField(max_length=100)
+
+    class Meta:
+        db_table = "web_specification"
+        verbose_name_plural = "specifications"
+
+    def __str__(self):
+        return f"{self.key}: {self.value}"
