@@ -142,10 +142,7 @@ i{
     border-radius: 8px;
     cursor: pointer;
 }
-#spotlight .list li.one{
-    color: #1D4ED8;
-    background-color: #E8EDFB;
-}
+
 #spotlight  .two{
     display: flex;
     align-items: center;
@@ -253,6 +250,9 @@ i{
 .image-price{
     font-size: 16px;
     font-weight: 700;
+}
+#category .text{
+    padding-top: 10px;
 }
 #category .item-content{
     padding: 12px 0 20px 0;
@@ -419,13 +419,7 @@ i{
 }
 
 .image-container .image-arrows i {
-    /* pointer-events: all;
-    font-size: 24px;
-    cursor: pointer;
-    background: rgba(0, 0, 0, 0.5);
-    color: #fff;
-    padding: 10px;
-    border-radius: 50%; */
+    
     display: flex;
     align-items: center;
     justify-content: center;
@@ -460,9 +454,7 @@ i{
     transform: scale(1.05);
 }
 
-.fa-angle-right{
-    /* border-radius: 4px 0 0 4px; */
-}
+
 #details .middle{
     display: flex;
     flex-direction: column;
@@ -569,7 +561,6 @@ i{
     font-size: 12px;
     font-weight: 400;
     text-decoration: underline;
-    /* line-height: 20px; */
     margin-bottom: 20px;
     white-space: nowrap;
     overflow: hidden;
@@ -615,13 +606,12 @@ i{
     width: 20%;
 }
 
-
 .list-item.saved-item {
     color: red;
     font-weight: bold;
 }
 .list-item a{
-    color: #000;
+    color: #616161;
 }
 #counter{
     position: relative;
@@ -668,8 +658,7 @@ i{
     padding:10px 24px;
     border-right: 1px solid #616161;
     background-color: #fff;
-    border-radius: 20px 0 0 0 ;
-    
+    border-radius: 20px 0 0 0 ;  
 }
 #specifics .top-payment{
     padding: 10px 24px;
@@ -717,11 +706,7 @@ i{
     padding: 20px 0;
 }
 #content-card .card-content img{
-    /* background-color: #F6F6F6;
-    padding: 40px 32px;
-    border-radius: 20px;
-    display: flex;
-    gap: 10px; */
+   
     width: 100%;
 }
 
@@ -780,4 +765,7 @@ i{
     margin-top: 10px;
 } 
 
-
+.list-item.active {
+    color: #1D4ED8;
+    background-color: #E8EDFB;
+}

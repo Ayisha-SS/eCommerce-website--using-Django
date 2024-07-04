@@ -42,9 +42,7 @@ class SavedItem(models.Model):
 
 
 class Gallery(models.Model):
-    # place = models.ForeignKey('web.Product',on_delete=models.CASCADE)
     image = models.ImageField(upload_to='products/images')
-    # name = models.CharField(max_length=100)
     name = models.ForeignKey("web.Product",on_delete=models.CASCADE)
 
     class Meta:

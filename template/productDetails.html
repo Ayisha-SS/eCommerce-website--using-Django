@@ -31,7 +31,8 @@
                 <div class="image-gallery">
                     {% for gallery_image in gallery_images %}
                     <div class="side-image">
-                        <img src="{{ gallery_image.image.url }}" alt="{{ gallery_image.id }}" onclick="showImage('{{ gallery_image.image.url }}')" />
+                        <img src="{{ gallery_image.image.url }}" alt="{{ gallery_image.id }}"
+                            onclick="showImage('{{ gallery_image.image.url }}')" />
                     </div>
                     {% endfor %}
                 </div>
@@ -109,10 +110,10 @@
                 </div>
             </div>
             <div class="right">
-                    <span>
-                        <img src="/static/images/card.png" alt="">
-                    </span>
-                </div>
+                <span>
+                    <img src="/static/images/card.png" alt="">
+                </span>
+            </div>
         </div>
     </section>
 </section>
@@ -162,7 +163,8 @@
                     <h5>Item specifics</h5>
                     <ul>
                         {% for specification in product.specifications.all %}
-                        <li><span class="key">{{ specification.key }}</span> <span class="value">{{ specification.value }}</span></li>
+                        <li><span class="key">{{ specification.key }}</span> <span class="value">{{ specification.value
+                                }}</span></li>
                         {% endfor %}
                     </ul>
 
@@ -176,24 +178,7 @@
     <section class="wrapper">
         <div class="card-content">
             <img src="/static/images/Content.png" alt="Content">
-             <!-- <div class="card-left">
-                <div class="card-image">
-                    <img src="/static/images/Ellipse 3.png" alt="">
-                </div>  
-             </div>
-             <div class="card-right">
-                <div class="card-text">
-                    <h4>Tech_Galore(2.3k)</h4>
-                    <button class="visit">Visit Store</button>
-                </div>
-                <div class="card-text">
-                        <span class="semi-text">
-                            <h5><span class="bold">99.2% </span><span>positive feedback</span></h5>
-                            <h5><span class="bold">2.3k </span><span>items sold</span></h5>
-                        </span>
-                    <button class="contact">Contact</button>
-                </div>
-            </div> -->
+
         </div>
     </section>
 </section>
@@ -213,5 +198,5 @@
 {% endblock %}
 
 {% block footer %}
-<!-- Overriding the footer block with nothing inside to avoid displaying the footer on this page -->
+
 {% endblock %}

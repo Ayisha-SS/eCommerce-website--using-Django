@@ -6,7 +6,6 @@ from web.models import Product, Category, Gallery,SavedItem,Specification
 class GalleryAdmin(admin.TabularInline):
     list_display = ["name","image"]
     model = Gallery
-    # prepopulated_fields = {"slug": ("name",)}
 
 
 class SpecificationInline(admin.TabularInline):
@@ -27,4 +26,3 @@ class CategoryAdmin(admin.ModelAdmin):
 admin.site.register(Product,ProductAdmin)
 admin.site.register(Category,CategoryAdmin)
 admin.site.register(SavedItem)
-# admin.site.register(Specification)
