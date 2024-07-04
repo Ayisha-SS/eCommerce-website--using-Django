@@ -6,36 +6,62 @@ from web.models import Product,SavedItem, Category,Gallery,Specification
 from .forms import ProductForm, SpecificationForm
 from django.forms import modelformset_factory
 
+
 # def index(request):
-#     recent = Product.objects.all()[:6]
-#     picks = Product.objects.all()[6:12]
-#     watches = Product.objects.all()[12:18]
+#     query = request.GET.get('q')
+#     if query:
+#         products = Product.objects.filter(name__icontains=query)
+#         recent, picks, watches = [], [], []  
+#         # featured_image_url = Product.featured_image.url if Product and Product.featured_image else None
+
+#     else:
+#         products = []
+#         recent = Product.objects.all()[:6]
+#         picks = Product.objects.all()[6:12]
+#         watches = Product.objects.all()[12:18]
 
 #     context = {
-#         "recents":recent,
-#         "picks":picks,
-#         "watches":watches
+#         "recents": recent,
+#         "picks": picks,
+#         "watches": watches,
+#         "products": products,
+#         "query": query,
+#         # "featured_image_url": featured_image_url
 #     }
 
-#     return render(request,"index.html",context=context)
+#     return render(request, "index.html", context=context)
+
 def index(request):
     query = request.GET.get('q')
+    category_slug = request.GET.get('category')  # Fetching category slug from query parameters
+    
     if query:
         products = Product.objects.filter(name__icontains=query)
-        recent, picks, watches = [], [], []  # Empty the sections if a query is made
+        recent, picks, watches = [], [], []  
+    elif category_slug:
+        category = get_object_or_404(Category, slug=category_slug)
+        products = category.products.all()       
     else:
         products = []
         recent = Product.objects.all()[:6]
         picks = Product.objects.all()[6:12]
         watches = Product.objects.all()[12:18]
-
+    
+    # selected_category_products = []
+    # if category_slug:
+    #     try:
+    #         category = Category.objects.get(slug=category_slug)
+    #         selected_category_products = category.products.all()[:6]  # Adjust the number of items as needed
+    #     except Category.DoesNotExist:
+    #         selected_category_products = []
+    
     context = {
         "recents": recent,
         "picks": picks,
         "watches": watches,
         "products": products,
         "query": query,
-        
+        "category_slug": category_slug,
     }
 
     return render(request, "index.html", context=context)
@@ -97,6 +123,8 @@ def details(request, product_id):
 def save_item(request, product_id):
     product = get_object_or_404(Product, id=product_id)
     saved_item, created = SavedItem.objects.get_or_create(product=product)
+
+
     if not created:
         saved_item.delete()
         saved = False
@@ -154,3 +182,20 @@ def fetch_items(request, slug):
 #     return render(request, 'home.html', {'products': products, 'query': query})
 
 
+def category_items(request, slug):
+    category = get_object_or_404(Category, slug=slug)
+    items = category.products.all()
+    
+    items_data = [{
+        'id': item.id,
+        'name': item.name,
+        'price': str(item.price),
+        'image_url': item.image.url if item.image else '',
+    } for item in items]
+    
+    data = {
+        'category_name': category.name,
+        'items': items_data,
+    }
+    
+    return JsonResponse(data)

@@ -25,7 +25,14 @@ function toggleItem(element) {
             heartIcon.classList.remove('fa-heart');
             heartIcon.classList.add('fa-heart-o');
             heartIcon.style.color = '';
+        
+
+        // Remove item from the DOM if on the saved items page
+        const savedItemDiv = document.getElementById(`saved-item-${productId}`);
+        if (savedItemDiv) {
+            savedItemDiv.remove();
         }
+    }
 
         localStorage.setItem('savedItems', JSON.stringify(savedItems));
         savedCounter.textContent = savedItems.length;
@@ -55,8 +62,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-
-//category item..
+// category item..
 document.addEventListener('DOMContentLoaded', function() {
     const categoryItems = document.querySelectorAll('.list-item[data-category-slug]');
     const categorySection = document.getElementById('category');
@@ -90,13 +96,9 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function renderCategoryItems(categoryName, items) {
-        // Set category title
         categoryTitle.textContent = `Category: ${categoryName}`;
-        
-        // Clear previous items
         categoryItemsContainer.innerHTML = '';
 
-        // Determine number of items per row
         const itemsPerRow = 6;
         let rowContainer = null;
 
@@ -141,7 +143,6 @@ document.addEventListener('DOMContentLoaded', function() {
         watchedSection.style.display = 'block';
     }
     
-    // Initialize default state
     showDefaultSections();
 });
 

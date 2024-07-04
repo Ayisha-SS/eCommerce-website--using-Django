@@ -17,6 +17,7 @@ class Product(models.Model):
     price = models.DecimalField(max_digits=10,decimal_places=2)
     category = models.ManyToManyField(Category, related_name='products')
     image = models.ImageField(upload_to='products/images/',blank=True)
+    featured_image = models.ImageField(upload_to='products/images/',blank=True)
     description = models.TextField()
     slug = models.SlugField(unique=True)
     stock = models.IntegerField()
@@ -38,16 +39,7 @@ class SavedItem(models.Model):
         return str(self.product)
     
 
-# class Category(models.Model):
-#     name = models.CharField(max_length=100)
-#     slug = models.SlugField(unique=True)
-#     class Meta:
-#         db_table = "web_category"
-#         verbose_name_plural = "categories"
 
-#     def __str__(self):
-#         return self.name
-    
 
 class Gallery(models.Model):
     # place = models.ForeignKey('web.Product',on_delete=models.CASCADE)
