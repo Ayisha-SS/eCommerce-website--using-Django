@@ -29,7 +29,6 @@
                     </span>
                 </div>
                 <div class="image-gallery">
-
                     {% for gallery_image in gallery_images %}
                     <div class="side-image">
                         <img src="{{ gallery_image.image.url }}" alt="{{ gallery_image.id }}" onclick="showImage('{{ gallery_image.image.url }}')" />
@@ -172,4 +171,47 @@
         </section>
     </section>
 </section>
+
+<section id="content-card">
+    <section class="wrapper">
+        <div class="card-content">
+            <img src="/static/images/Content.png" alt="Content">
+             <!-- <div class="card-left">
+                <div class="card-image">
+                    <img src="/static/images/Ellipse 3.png" alt="">
+                </div>  
+             </div>
+             <div class="card-right">
+                <div class="card-text">
+                    <h4>Tech_Galore(2.3k)</h4>
+                    <button class="visit">Visit Store</button>
+                </div>
+                <div class="card-text">
+                        <span class="semi-text">
+                            <h5><span class="bold">99.2% </span><span>positive feedback</span></h5>
+                            <h5><span class="bold">2.3k </span><span>items sold</span></h5>
+                        </span>
+                    <button class="contact">Contact</button>
+                </div>
+            </div> -->
+        </div>
+    </section>
+</section>
+<div id="footer-mini" class="wrapper">
+    <ul class="mini-list">
+        <li class="mini-item">Abour eBay</li>
+        <li class="mini-item">Announcement</li>
+        <li class="mini-item">Community</li>
+        <li class="mini-item">Media Centre</li>
+        <li class="mini-item">Seller Centre</li>
+        <li class="mini-item">Policies</li>
+        <li class="mini-item">Advetise</li>
+        <li class="mini-item">Help</li>
+        <li class="mini-item">Site Map</li>
+    </ul>
+</div>
+{% endblock %}
+
+{% block footer %}
+<!-- Overriding the footer block with nothing inside to avoid displaying the footer on this page -->
 {% endblock %}

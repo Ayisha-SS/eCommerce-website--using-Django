@@ -63,12 +63,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 // category item..
+
 document.addEventListener('DOMContentLoaded', function() {
     const categoryItems = document.querySelectorAll('.list-item[data-category-slug]');
     const categorySection = document.getElementById('category');
-    const recentSection = document.getElementById('recent');
-    const pickedSection = document.getElementById('picked');
-    const watchedSection = document.getElementById('watched');
     const categoryItemsContainer = document.getElementById('category-items');
     const categoryTitle = categorySection.querySelector('.text');
 
@@ -99,16 +97,7 @@ document.addEventListener('DOMContentLoaded', function() {
         categoryTitle.textContent = `Category: ${categoryName}`;
         categoryItemsContainer.innerHTML = '';
 
-        const itemsPerRow = 6;
-        let rowContainer = null;
-
-        items.forEach((item, index) => {
-            if (index % itemsPerRow === 0) {
-                rowContainer = document.createElement('div');
-                rowContainer.classList.add('item-row');
-                categoryItemsContainer.appendChild(rowContainer);
-            }
-
+        items.forEach(item => {
             const itemDiv = document.createElement('div');
             itemDiv.classList.add('item'); 
             itemDiv.innerHTML = `
@@ -123,7 +112,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     <span class="image-price">AU $${item.price}</span>
                 </div>
             `;
-            rowContainer.appendChild(itemDiv);
+            categoryItemsContainer.appendChild(itemDiv);
         });
 
         showCategorySection();
@@ -131,22 +120,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function showCategorySection() {
         categorySection.style.display = 'block';
-        recentSection.style.display = 'none';
-        pickedSection.style.display = 'none';
-        watchedSection.style.display = 'none';
     }
-
-    function showDefaultSections() {
-        categorySection.style.display = 'none';
-        recentSection.style.display = 'block';
-        pickedSection.style.display = 'block';
-        watchedSection.style.display = 'block';
-    }
-    
-    showDefaultSections();
 });
-
-
 
 //search..
 function performSearch() {
