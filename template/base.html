@@ -49,12 +49,29 @@
             <section class="wrapper">
                 <div class='navbar'>
                     <div>
-                        <img src="{% static 'images/logo' %}.png" alt="Logo" />
+                        <a href="{% url 'web:index' %}">
+                            <img src="{% static 'images/logo' %}.png" alt="Logo" />
+                        </a>
                     </div>
                     <div class='nav-item'>
                         <div class='search'>
-                            <span class='search-all'>All
+                            <span class='search-all' id="category-selector" onclick="toggleDropdown()">All
                                 <i class="fa fa-angle-down"></i>
+                                <span class="dropdown">
+                                    <ul class="dropdown-list">
+                                        <li class="dropdown-item" onclick="searchByCategory('All')">All</li>
+                                        <li class="dropdown-item" onclick="searchByCategory('All')">Electronics</li>
+                                        <li class="dropdown-item" onclick="searchByCategory('motors')">Motors</li>
+                                        <li class="dropdown-item" onclick="searchByCategory('home-garden')">Home & Garden</li>
+                                        <li class="dropdown-item" onclick="searchByCategory('clothing-accessories')">Clothing & Accessories</li>
+                                        <li class="dropdown-item" onclick="searchByCategory('sports')">Sports</li>
+                                        <li class="dropdown-item" onclick="searchByCategory('health-beauty')">Health & Beauty</li>
+                                        <li class="dropdown-item" onclick="searchByCategory('toys')">Toys</li>
+                                        <li class="dropdown-item" onclick="searchByCategory('business-industrial')">Business & Industrial</li>
+                                        <li class="dropdown-item" onclick="searchByCategory('collectables')">Collectables</li>
+                                        <li class="dropdown-item" onclick="searchByCategory('deals-sales')">Deals & Sales</li>
+                                    </ul>
+                                </span>
                             </span>
                             <div class='search-bar'>
                                 <span class='search-icon'>
@@ -62,13 +79,16 @@
                                 </span>
                                 <input type="text" id="search-input" class="search-input"
                                     placeholder='Search for anything' />
-
+                                    <i class="fa fa-times" aria-hidden="true"></i>
                             </div>
                         </div>
                         <button type="button" class="search-button" onclick="performSearch()">Search</button>
                         <span class='search-link'><a href="">Advanced</a></span>
                     </div>
                 </div>
+
+                <div id="products-container"></div>
+<div id="no-results" style="display: none;">No items found.</div>
             </section>
         </section>
     </section>

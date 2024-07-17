@@ -15,6 +15,8 @@ def index(request):
     recent = []
     picks = []
     watches = []
+
+   
     
     if query:
         products = Product.objects.filter(name__icontains=query)

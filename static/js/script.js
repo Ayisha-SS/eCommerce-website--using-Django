@@ -1,5 +1,4 @@
-document.addEventListener('DOMContentLoaded', function () {
-    //saved items....
+//     //saved items....
 
     function toggleItem(element) {
         const productId = element.getAttribute("data-product-id");
@@ -130,12 +129,51 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
     //search..
+    // function performSearch() {
+    //     const query = document.getElementById('search-input').value;
+    //     if (query.trim() !== '') {
+    //         window.location.href = `/?q=${encodeURIComponent(query)}`;
+    //     }
+    // }
+
+
+
+    let selectedCategory = 'All';
+
+    function toggleDropdown() {
+        const searchAll = document.querySelector('.search-all');
+        searchAll.classList.toggle('active');
+    }
+    
     function performSearch() {
         const query = document.getElementById('search-input').value;
         if (query.trim() !== '') {
-            window.location.href = `/?q=${encodeURIComponent(query)}`;
+            if (selectedCategory === 'All') {
+                window.location.href = `/?q=${encodeURIComponent(query)}`;
+            } else {
+                window.location.href = `/?q=${encodeURIComponent(query)}&category=${encodeURIComponent(selectedCategory)}`;
+            }
+        } else {
+            if (selectedCategory === 'All') {
+                window.location.href = '/';
+            } else {
+                window.location.href = `/?category=${encodeURIComponent(selectedCategory)}`;
+            }
         }
     }
+    
+    function searchByCategory(category) {
+        selectedCategory = category;
+        const searchAll = document.querySelector('.search-all');
+        searchAll.innerHTML = `${category.charAt(0).toUpperCase() + category.slice(1)} <i class="fa fa-angle-down"></i><span class="dropdown">${searchAll.querySelector('.dropdown').innerHTML}</span>`;
+        toggleDropdown(); // Close the dropdown
+        performSearch(); // Perform search immediately after selecting category
+    }
+
+
+
+
+
 
 
 
@@ -162,4 +200,54 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
 
-});
+
+    // quantiy change...
+    document.addEventListener('DOMContentLoaded', () => {
+        const decreaseButton = document.getElementById('decrease');
+        const increaseButton = document.getElementById('increase');
+        const quantitySpan = document.getElementById('quantity');
+        const priceSpan = document.getElementById('price');
+        const pricePerUnit = parseFloat(priceSpan.getAttribute('data-price')); // Initial price of the product
+        const availableStockSpan = document.getElementById('available_stock')
+        const availableStock = parseInt(availableStockSpan.textContent);
+        const initialStock = parseInt(availableStockSpan.textContent);
+        
+        function updatePrice(quantity) {
+            const newPrice = pricePerUnit * quantity;
+            priceSpan.textContent = `AU $${newPrice.toFixed(2)}`;
+        }
+
+        function updateStock(quantity){
+            const remainingStock = initialStock - (quantity-1);
+            availableStockSpan.textContent = remainingStock;
+        }
+    
+        function decreaseQuantity() {
+            let quantity = parseInt(quantitySpan.textContent);
+            if (quantity > 1) {
+                quantity -= 1;
+                quantitySpan.textContent = quantity;
+                updatePrice(quantity);
+                updateStock(quantity);
+            }
+        }
+    
+        function increaseQuantity() {
+            let quantity = parseInt(quantitySpan.textContent);
+            if (availableStock > 0 && quantity < initialStock) {
+                quantity += 1;
+                quantitySpan.textContent = quantity;
+                updatePrice(quantity);
+                updateStock(quantity);
+            }
+        }
+    
+        if (decreaseButton) {
+            decreaseButton.addEventListener('click', decreaseQuantity);
+        }
+        if (increaseButton) {
+            increaseButton.addEventListener('click', increaseQuantity);
+        }
+    });
+// });
+

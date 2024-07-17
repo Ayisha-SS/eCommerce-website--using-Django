@@ -6,7 +6,8 @@
 <section id="details">
     <section class="wrapper">
         <div class="head">
-            <span class="search-back"><i class="fa fa-angle-left" aria-hidden="true"></i></span>
+            <span class="search-back">
+                <a href="{% url 'web:index' %}"><i class="fa fa-angle-left" aria-hidden="true"></i></a></span>
             <h6 class="head-text">
                 <a href="{% url 'web:index' %}" class="search-text">Back to search results</a>
                 <span class="text">
@@ -41,14 +42,18 @@
                 <h3 class="title">{{ product.name }}</h3>
                 <div class="availability">
                     <span class="condition">Condition: <strong>Brand New</strong></span>
-                    <span class="quantity">
-                        <h6>Quantity: <span class="number">1</span></h6>
-                        <h6>{{ available_stock }} available / <span class="total">{{product.stock}} sold</span></h6>
+                    <span class="quantity" >
+                        <h6>Quantity: 
+                            <button class="quantity-button" id="decrease">-</button>
+                            <span class="number" id="quantity">1</span>
+                            <button class="quantity-button" id="increase">+</button>
+                        </h6>
+                        <h6><span id="available_stock">{{ available_stock }}</span> available / <span class="total">{{product.stock}} sold</span></h6>
                     </span>
                 </div>
                 <div>
                     <span class="price">Price:
-                        <strong>AU ${{product.price}}</strong>
+                        <strong id="price" data-price="{{product.price}}">AU ${{product.price}}</strong>
                         Buy now,pay later available
                     </span>
                     <div class="button">
@@ -163,8 +168,9 @@
                     <h5>Item specifics</h5>
                     <ul>
                         {% for specification in product.specifications.all %}
-                        <li><span class="key">{{ specification.key }}</span> <span class="value">{{ specification.value
-                                }}</span></li>
+                        <li><span class="key">{{ specification.key }}</span> 
+                            <span class="value">{{ specification.value }}</span>
+                        </li>
                         {% endfor %}
                     </ul>
 
