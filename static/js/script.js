@@ -136,39 +136,43 @@
     //     }
     // }
 
-
-
-    let selectedCategory = 'All';
-
     function toggleDropdown() {
         const searchAll = document.querySelector('.search-all');
         searchAll.classList.toggle('active');
     }
-    
+
     function performSearch() {
-        const query = document.getElementById('search-input').value;
-        if (query.trim() !== '') {
-            if (selectedCategory === 'All') {
-                window.location.href = `/?q=${encodeURIComponent(query)}`;
-            } else {
-                window.location.href = `/?q=${encodeURIComponent(query)}&category=${encodeURIComponent(selectedCategory)}`;
-            }
-        } else {
-            if (selectedCategory === 'All') {
-                window.location.href = '/';
-            } else {
-                window.location.href = `/?category=${encodeURIComponent(selectedCategory)}`;
-            }
+        const query = document.getElementById('search-input').value.trim();
+        const selectedCategory = document.querySelector('.dropdown-item.active');
+        const category = selectedCategory ? selectedCategory.dataset.category : 'all'; // Default to 'all'
+
+        if (query !== '') {
+          let searchUrl = `/?q=${encodeURIComponent(query)}`;
+      
+          if (category !== 'all') {
+            searchUrl += `&category=${category}`;
+          }
+      
+          window.location.href = searchUrl;
         }
-    }
-    
-    function searchByCategory(category) {
-        selectedCategory = category;
-        const searchAll = document.querySelector('.search-all');
-        searchAll.innerHTML = `${category.charAt(0).toUpperCase() + category.slice(1)} <i class="fa fa-angle-down"></i><span class="dropdown">${searchAll.querySelector('.dropdown').innerHTML}</span>`;
-        toggleDropdown(); // Close the dropdown
-        performSearch(); // Perform search immediately after selecting category
-    }
+      }
+      
+      // Add event listener for category selection
+      const dropdownItems = document.querySelectorAll('.dropdown-item');
+      
+      dropdownItems.forEach(item => {
+        item.addEventListener('click', function() {
+          // Remove active class from previously selected item
+          document.querySelector('.dropdown-item.active').classList.remove('active');
+      
+          // Add active class to clicked item
+          this.classList.add('active');
+      
+          // Update search-all text (optional)
+          document.getElementById('category-selector').textContent = this.textContent;
+        });
+      });
+
 
 
 

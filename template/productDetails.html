@@ -138,10 +138,17 @@
                         <div class="image">
                             <img src="{{similar_product.image.url}}" alt="{{ similar_product.name }}">
                         </div>
-                        <span class="heart"><i class="fa fa-heart-o" aria-hidden="true"></i></span>
+                        <!-- <span class="heart"><i class="fa fa-heart-o" aria-hidden="true"></i></span> -->
+                        <span class="heart" id="heart-{{ similar_product.id }}" data-product-id="{{ similar_product.id }}"
+                        onclick="toggleItem(this)">
+                        <i class="fa {% if similar_product.id in saved_item_ids %}fa-heart{% else %}fa-heart-o{% endif %}"
+                            aria-hidden="true"
+                            style="{% if similar_product.id in saved_item_ids %}color: red;{% endif %}"></i>
+                    </span>
+
                     </div>
                     <span class="text-content">
-                        <a href="{% url 'web:details' product.id %}" class="image-text">{{ similar_product.name }}<br />
+                        <a href="{% url 'web:details' similar_product.id %}" class="image-text">{{ similar_product.name }}<br />
                         </a>
                         <span class="image-price">AU ${{ similar_product.price }}</span>
                     </span>

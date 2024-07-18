@@ -59,17 +59,17 @@
                                 <i class="fa fa-angle-down"></i>
                                 <span class="dropdown">
                                     <ul class="dropdown-list">
-                                        <li class="dropdown-item" onclick="searchByCategory('All')">All</li>
-                                        <li class="dropdown-item" onclick="searchByCategory('All')">Electronics</li>
-                                        <li class="dropdown-item" onclick="searchByCategory('motors')">Motors</li>
-                                        <li class="dropdown-item" onclick="searchByCategory('home-garden')">Home & Garden</li>
-                                        <li class="dropdown-item" onclick="searchByCategory('clothing-accessories')">Clothing & Accessories</li>
-                                        <li class="dropdown-item" onclick="searchByCategory('sports')">Sports</li>
-                                        <li class="dropdown-item" onclick="searchByCategory('health-beauty')">Health & Beauty</li>
-                                        <li class="dropdown-item" onclick="searchByCategory('toys')">Toys</li>
-                                        <li class="dropdown-item" onclick="searchByCategory('business-industrial')">Business & Industrial</li>
-                                        <li class="dropdown-item" onclick="searchByCategory('collectables')">Collectables</li>
-                                        <li class="dropdown-item" onclick="searchByCategory('deals-sales')">Deals & Sales</li>
+                                        <li class="dropdown-item active" data-category="all">All</li>
+                                        <li class="dropdown-item" data-category="electronics">Electronics</li>
+                                        <li class="dropdown-item" data-category="motors">Motors</li>
+                                        <li class="dropdown-item" data-category="home-garden">Home & Garden</li>
+                                        <li class="dropdown-item" data-category="clothing-accessories">Clothing & Accessories</li>
+                                        <li class="dropdown-item" data-category="sports">Sports</li>
+                                        <li class="dropdown-item" data-category="health-beauty">Health & Beauty</li>
+                                        <li class="dropdown-item" data-category="toys">Toys</li>
+                                        <li class="dropdown-item" data-category="business-industrial">Business & Industrial</li>
+                                        <li class="dropdown-item" data-category="collectables">Collectables</li>
+                                        <li class="dropdown-item" data-category="deals-sales">Deals & Sales</li>
                                     </ul>
                                 </span>
                             </span>
@@ -79,7 +79,7 @@
                                 </span>
                                 <input type="text" id="search-input" class="search-input"
                                     placeholder='Search for anything' />
-                                    <i class="fa fa-times" aria-hidden="true"></i>
+                                    <!-- <i class="fa fa-times" aria-hidden="true"></i> -->
                             </div>
                         </div>
                         <button type="button" class="search-button" onclick="performSearch()">Search</button>
@@ -88,7 +88,7 @@
                 </div>
 
                 <div id="products-container"></div>
-<div id="no-results" style="display: none;">No items found.</div>
+                <div id="no-results" style="display: none;">No items found.</div>
             </section>
         </section>
     </section>

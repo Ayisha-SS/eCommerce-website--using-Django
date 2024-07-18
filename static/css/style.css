@@ -69,19 +69,20 @@ i{
 
 #navBar .navbar{
     display: flex;
-    gap: 1.25rem;
+    /* gap: 1.25rem; */
     padding: 16px 0;
     align-items: center;
 }
 #navBar .nav-item{
     display: flex;
-    gap: 12px;
+    /* gap: 12px; */
     align-items: center;
 }
 #navBar .search{
     display: flex;
     width: 100%;
     border: 1px solid;
+    margin: 0 5px;
 }
 #navBar .search-all{
     display: flex;
@@ -107,7 +108,8 @@ i{
 }
 
 .search-all .dropdown.show {
-    display: block;
+    display: flex;
+    flex-direction: column;
 }
 
 #navBar .search-all .dropdown ul{
@@ -134,7 +136,7 @@ i{
     align-items: center;
     gap: 12px;
     background-color: #f4f2f2;
-    padding: 10px 45rem 10px 5px;
+    padding: 10px 38rem 10px 5px;
     border: none;
 }
 #navBar .search-icon{
@@ -153,6 +155,7 @@ i{
     color: #fff;
     border-radius: 4px;
     border: none;
+    margin-right: 5px;
 }
 #navBar .search-link{
     color:#323232;
@@ -168,13 +171,17 @@ i{
     font-size: 14px;
     font-weight: 600;
     justify-content: center;
+    /* text-align: center; */
+    /* justify-content: space-between; */
     color: #494949;
     padding: 12px 0;
+    /* gap:5px; */
 }
 #spotlight .list  li{
-    padding: 4px 8px;
+    padding: 4px 2px;
     border-radius: 8px;
     cursor: pointer;
+    /* margin-right: auto; */
 }
 
 #spotlight  .two{
@@ -241,12 +248,20 @@ i{
  .item-content{
     padding: 12px 0 20px 0;
     display: flex;
-    gap: 16px;
+    /* gap: 16px; */
+    /* margin-right: auto; */
     margin-top: 8px;
+   
 }
+
 .item-container{
-    /* height: 100px; */
+    width: min-content;
+    margin-right: auto;
 }
+.item-container:nth-child(6){
+    margin-right: 0;
+}
+
  .image-content{
     position: relative;
     object-fit: contain;
@@ -825,3 +840,33 @@ i{
     color: #1D4ED8;
     background-color: #E8EDFB;
 }
+
+/* responsive */
+
+@media all and (max-width:1440px){}
+@media all and (max-width:1280px){
+    .item-content{
+        /* gap: 2px; */
+    }
+    .item-container{
+        margin-right: 5px;
+    }
+    .image-content .image {
+        width: 190px;     
+    }
+    .heart{
+        left: 9rem;
+    }
+}
+@media all and (max-width:1080px){
+    #navBar .search-input{
+  
+        padding: 10px 29rem 10px 5px;
+    }
+}
+@media all and (max-width:980px){}
+@media all and (max-width:768px){}
+@media all and (max-width:640px){}
+@media all and (max-width:540px){}
+@media all and (max-width:480px){}
+@media all and (max-width:360px){}
