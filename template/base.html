@@ -21,22 +21,30 @@
         <section class="border">
             <section class="wrapper">
                 <div class='container'>
-                    <div class=''>
-                        <ul class='list-items'>
-                            <li><img src="{% static 'images/subLogo' %}.png" alt="eBay plus" /></li>
-                            <li>eBay Deals</li>
-                            <li>Find a Store</li>
-                            <li>Help</li>
-                        </ul>
+                    <div class='left'>
+                        <div>
+                            <img src="{% static 'images/subLogo' %}.png" alt="eBay plus" />
+                        </div>
+                        <div class="left-list">
+                            <ul class='list-items'>
+                                <li>eBay Deals</li>
+                                <li>Find a Store</li>
+                                <li>Help</li>
+                            </ul>
+                        </div>
                     </div>
-                    <div>
+                    <div class="right">
                         <ul class='list-items'>
-                            <li>Sell</li>
-                            <li class='item'>Watch List <i class="fa fa-angle-down"></i></li>
-                            <li class='item'><i class="fa fa-user-circle" aria-hidden="true"></i> <i
-                                    class="fa fa-angle-down"></i></li>
+                            <div class="list-items2">
+                                <li>Sell</li>
+                                <li class='item' style="white-space: nowrap;">Watch List <i class="fa fa-angle-down"></i></li>
+                            </div>    
+                            <div class="list-items-icon">                        
+                            <li class='item'><i class="fa fa-user-circle" aria-hidden="true"><i
+                                class="fa fa-angle-down"></i></li></i> 
                             <li><i class="fa fa-bell-o" aria-hidden="true"></i></li>
                             <li><i class="fa fa-shopping-cart" aria-hidden="true"></i></li>
+                        </div>
                         </ul>
                     </div>
                 </div>
@@ -79,7 +87,6 @@
                                 </span>
                                 <input type="text" id="search-input" class="search-input"
                                     placeholder='Search for anything' />
-                                    <!-- <i class="fa fa-times" aria-hidden="true"></i> -->
                             </div>
                         </div>
                         <button type="button" class="search-button" onclick="performSearch()">Search</button>
@@ -92,6 +99,8 @@
             </section>
         </section>
     </section>
+
+        
 
     {% block content %}
 

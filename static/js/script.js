@@ -173,8 +173,15 @@
         });
       });
 
-
-
+   
+      function toggleSearch() {
+        var search = document.querySelector('.search');
+        if (search.classList.contains('search-bar-expanded')) {
+            search.classList.remove('search-bar-expanded');
+        } else {
+            search.classList.add('search-bar-expanded');
+        }
+    }
 
 
 
@@ -255,3 +262,15 @@
     });
 // });
 
+document.addEventListener("DOMContentLoaded", function() {
+    const hamburger = document.getElementById("hamburger-menu");
+    const savedList = document.getElementById("saved-list");
+    const closeBtn = document.getElementById("close-btn");
+
+    hamburger.addEventListener("click", function() {
+        savedList.style.display = savedList.style.display === "flex" ? "none" : "flex";
+    });
+    closeBtn.addEventListener("click", function() {
+        savedList.style.display = "none";
+    });
+});

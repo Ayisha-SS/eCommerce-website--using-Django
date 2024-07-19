@@ -6,7 +6,13 @@
 <section id="spotlight">
     <section class="bg-content">
         <section class="wrapper">
+            <div class="hamburger" id="hamburger-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
             <ul class="list" id="saved-list">
+                <li class="list-item close-btn" id="close-btn">✖</li>
                 <li class="list-item one" id="home"><a href="{% url 'web:index' %}" id="home">Home</a></li>
                 <li class="list-item two" id="counter">
                     <i class="fa fa-heart" aria-hidden="true"></i>
@@ -24,7 +30,7 @@
                 <li class="list-item" data-category-slug="collectables">Collectables</li>
                 <li class="list-item" data-category-slug="deals-sales">Deals & Sales</li>
             </ul>
-
+           
             {% if query %}
             <h2>Search Results for "{{ query }}"</h2>
             <div class="item-content-grid">
