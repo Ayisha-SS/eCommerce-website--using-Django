@@ -1,4 +1,4 @@
-//     //saved items....
+    //saved items....
 
     function toggleItem(element) {
         const productId = element.getAttribute("data-product-id");
@@ -121,21 +121,13 @@
                 categoryItemsContainer.appendChild(itemDiv);
             });
 
-            // Show category section
             categorySection.style.display = 'block';
         }
 
     });
 
 
-    //search..
-    // function performSearch() {
-    //     const query = document.getElementById('search-input').value;
-    //     if (query.trim() !== '') {
-    //         window.location.href = `/?q=${encodeURIComponent(query)}`;
-    //     }
-    // }
-
+// search...
     let currentCategory = 'all';
 
     function toggleDropdown() {
@@ -158,32 +150,23 @@
       }
     }
     
-    // Add event listener for category selection
     const dropdownItems = document.querySelectorAll('.dropdown-item');
     
     dropdownItems.forEach(item => {
       item.addEventListener('click', function() {
-        // Remove active class from previously selected item
         document.querySelector('.dropdown-item.active').classList.remove('active');
     
-        // Add active class to clicked item
         this.classList.add('active');
     
-        // Update currentCategory variable
         currentCategory = this.dataset.category;
     
-        // Update search-all text (optional)
         document.getElementById('category-selector').textContent = this.textContent;
     
-        // Toggle dropdown
         toggleDropdown();
       });
     });
     
-    // Add event listener for search button
     document.querySelector('.search-icon').addEventListener('click', performSearch);
-
-
 
 
 
@@ -260,7 +243,6 @@
             increaseButton.addEventListener('click', increaseQuantity);
         }
     });
-// });
 
 document.addEventListener("DOMContentLoaded", function() {
     const hamburger = document.getElementById("hamburger-menu");

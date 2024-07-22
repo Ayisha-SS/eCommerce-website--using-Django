@@ -15,9 +15,7 @@ def index(request):
     recent = []
     picks = []
     watches = []
-    similar_product = []
 
-   
     
     if query:
         products = Product.objects.filter(name__icontains=query)
@@ -37,7 +35,6 @@ def index(request):
         "watches": watches,
         "query": query,
         "category_slug": category_slug,
-        # 'similar_product': similar_product
     }
 
     return render(request, "index.html", context=context)
