@@ -136,52 +136,52 @@
     //     }
     // }
 
+    let currentCategory = 'all';
+
     function toggleDropdown() {
-        const searchAll = document.querySelector('.search-all');
-        searchAll.classList.toggle('active');
+      const dropdown = document.querySelector('.dropdown');
+      dropdown.classList.toggle('active');
     }
-
+    
     function performSearch() {
-        const query = document.getElementById('search-input').value.trim();
-        const selectedCategory = document.querySelector('.dropdown-item.active');
-        const category = selectedCategory ? selectedCategory.dataset.category : 'all'; // Default to 'all'
-
-        if (query !== '') {
-          let searchUrl = `/?q=${encodeURIComponent(query)}`;
-      
-          if (category !== 'all') {
-            searchUrl += `&category=${category}`;
-          }
-      
-          window.location.href = searchUrl;
+      const query = document.getElementById('search-input').value.trim();
+      const category = currentCategory;
+    
+      if (query!== '') {
+        let searchUrl = `/?q=${encodeURIComponent(query)}`;
+    
+        if (category!== 'all') {
+          searchUrl += `&category=${category}`;
         }
+    
+        window.location.href = searchUrl;
       }
-      
-      // Add event listener for category selection
-      const dropdownItems = document.querySelectorAll('.dropdown-item');
-      
-      dropdownItems.forEach(item => {
-        item.addEventListener('click', function() {
-          // Remove active class from previously selected item
-          document.querySelector('.dropdown-item.active').classList.remove('active');
-      
-          // Add active class to clicked item
-          this.classList.add('active');
-      
-          // Update search-all text (optional)
-          document.getElementById('category-selector').textContent = this.textContent;
-        });
-      });
-
-   
-      function toggleSearch() {
-        var search = document.querySelector('.search');
-        if (search.classList.contains('search-bar-expanded')) {
-            search.classList.remove('search-bar-expanded');
-        } else {
-            search.classList.add('search-bar-expanded');
-        }
     }
+    
+    // Add event listener for category selection
+    const dropdownItems = document.querySelectorAll('.dropdown-item');
+    
+    dropdownItems.forEach(item => {
+      item.addEventListener('click', function() {
+        // Remove active class from previously selected item
+        document.querySelector('.dropdown-item.active').classList.remove('active');
+    
+        // Add active class to clicked item
+        this.classList.add('active');
+    
+        // Update currentCategory variable
+        currentCategory = this.dataset.category;
+    
+        // Update search-all text (optional)
+        document.getElementById('category-selector').textContent = this.textContent;
+    
+        // Toggle dropdown
+        toggleDropdown();
+      });
+    });
+    
+    // Add event listener for search button
+    document.querySelector('.search-icon').addEventListener('click', performSearch);
 
 
 

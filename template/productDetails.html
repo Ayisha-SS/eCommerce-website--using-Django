@@ -133,12 +133,11 @@
             <div class="item-content">
                 {% for similar_product in similar_products %}
 
-                <div>
+                <div class="item-container">
                     <div class="image-content">
                         <div class="image">
                             <img src="{{similar_product.image.url}}" alt="{{ similar_product.name }}">
                         </div>
-                        <!-- <span class="heart"><i class="fa fa-heart-o" aria-hidden="true"></i></span> -->
                         <span class="heart" id="heart-{{ similar_product.id }}" data-product-id="{{ similar_product.id }}"
                         onclick="toggleItem(this)">
                         <i class="fa {% if similar_product.id in saved_item_ids %}fa-heart{% else %}fa-heart-o{% endif %}"
